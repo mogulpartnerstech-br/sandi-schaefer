@@ -106,7 +106,7 @@
         .about-text { font-size: 0.95rem; text-align: justify; color: #ccc; line-height: 1.7; }
         .clearfix::after { content: ""; clear: both; display: table; }
 
-        /* --- CARROSSEL INFINITO (COLORIDO) --- */
+        /* --- CARROSSEL INFINITO --- */
         .carousel-wrapper {
             width: 100%;
             overflow: hidden;
@@ -144,7 +144,7 @@
             100% { transform: translateX(-50%); } 
         }
 
-        /* --- MÉTRICAS ABAIXO DO CARROSSEL --- */
+        /* --- MÉTRICAS --- */
         .metrics-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -202,6 +202,20 @@
         .footer { text-align: center; margin-top: 30px; font-size: 0.7rem; color: #555; text-transform: uppercase; }
         .footer a { color: #888; text-decoration: none; font-weight: bold; }
     </style>
+
+    <!-- SCRIPT DE CORREÇÃO DO INSTAGRAM -->
+    <script>
+        function openInsta() {
+            // Verifica se é celular (Android ou iPhone)
+            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                // Tenta abrir o App Direto
+                window.location.href = "instagram://user?username=sandiischaefer";
+            } else {
+                // Se for PC, abre nova aba normal
+                window.open("https://www.instagram.com/sandiischaefer", "_blank");
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -217,8 +231,9 @@
                 <div style="width: 40px; height: 1px; background: #fff; margin: 5px auto 15px;"></div>
                 
                 <div class="header-social">
-                    <!-- FIX: Link do Instagram corrigido para Deep Linking Mobile (_u/) -->
-                    <a href="https://instagram.com/_u/sandiischaefer/" target="_blank" class="h-icon"><i class="fab fa-instagram"></i></a>
+                    <!-- BOTÃO INSTA TOPO COM CORREÇÃO -->
+                    <a href="javascript:void(0)" onclick="openInsta()" class="h-icon"><i class="fab fa-instagram"></i></a>
+                    
                     <a href="https://wa.me/554792880402" target="_blank" class="h-icon"><i class="fab fa-whatsapp"></i></a>
                     <a href="mailto:sandiele.emili@gmail.com" class="h-icon"><i class="far fa-envelope"></i></a>
                 </div>
@@ -248,7 +263,7 @@
                 <img src="event_photo.jpg" class="carousel-item" alt="Event">
                 <img src="estilo_vaidosa.jpg" class="carousel-item" alt="Style">
                 
-                <!-- CONJUNTO 2 (DUPLICADO) -->
+                <!-- CONJUNTO 2 -->
                 <img src="full_body_bw.jpg" class="carousel-item" alt="Full Body">
                 <img src="lookbook.jpg" class="carousel-item" alt="Lookbook" style="object-position: top;">
                 <img src="event_photo.jpg" class="carousel-item" alt="Event">
@@ -335,8 +350,8 @@
                         </div>
                     </a>
 
-                    <!-- FIX: Link do Instagram corrigido aqui também -->
-                    <a href="https://instagram.com/_u/sandiischaefer/" target="_blank" class="contact-btn">
+                    <!-- BOTÃO INSTA FINAL COM CORREÇÃO -->
+                    <a href="javascript:void(0)" onclick="openInsta()" class="contact-btn">
                         <i class="fab fa-instagram c-icon"></i>
                         <div class="c-text">
                             <span>Instagram</span>
