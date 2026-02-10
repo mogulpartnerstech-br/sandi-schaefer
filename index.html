@@ -8,7 +8,6 @@
     <!-- METADADOS -->
     <meta property="og:title" content="Sandi Schaefer | Modelo">
     <meta property="og:description" content="Portfólio Criativo, Medidas e Composite Digital.">
-    <!-- Importante: O WhatsApp só mostra a imagem se o link for https real -->
     <meta property="og:image" content="hero_horizontal.jpg"> 
     <meta property="og:type" content="website">
     
@@ -41,12 +40,12 @@
             min-height: 100vh;
             position: relative;
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            padding-bottom: 20px;
         }
 
-        /* --- 1. HERO (CORRIGIDO) --- */
+        /* --- HERO --- */
         .header {
             position: relative;
-            /* Altura fixa para garantir que a imagem horizontal apareça bem */
             height: 400px; 
             display: flex;
             flex-direction: column;
@@ -58,15 +57,13 @@
             border-bottom-left-radius: 35px;
             border-bottom-right-radius: 35px;
             margin-bottom: 30px;
-            background-color: #000; /* Fundo preto caso a imagem demore */
+            background-color: #000;
         }
 
         .header-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            /* A imagem deve se chamar hero_horizontal.jpg */
             background-image: url('hero_horizontal.jpg'); 
             background-size: cover; 
-            /* Foca no centro/topo para não cortar a cabeça */
             background-position: center top; 
             filter: grayscale(100%);
             z-index: 1;
@@ -77,13 +74,11 @@
             position: absolute; bottom: 0; left: 0; width: 100%; height: 70%;
             background: linear-gradient(to top, rgba(5,5,5,1) 15%, rgba(5,5,5,0.4) 60%, transparent 100%);
             z-index: 2;
-            pointer-events: none; /* Garante que o clique passe por ele */
+            pointer-events: none;
         }
 
         .header-content { 
-            position: relative; 
-            z-index: 10; /* Z-index alto para o botão funcionar */
-            width: 100%; padding: 0 20px; 
+            position: relative; z-index: 10; width: 100%; padding: 0 20px; 
         }
 
         .title { 
@@ -92,15 +87,10 @@
         }
         .subtitle { font-size: 0.8rem; color: #ccc; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px; }
 
-        .header-social {
-            display: inline-flex; gap: 15px; margin-top: 10px;
-        }
-        .h-icon {
-            color: #fff; font-size: 1.5rem; transition: 0.3s; cursor: pointer;
-        }
+        .header-social { display: inline-flex; gap: 15px; margin-top: 10px; }
+        .h-icon { color: #fff; font-size: 1.5rem; transition: 0.3s; cursor: pointer; }
         .h-icon:hover { color: #aaa; transform: scale(1.1); }
 
-        /* --- TÍTULOS --- */
         .section-title {
             text-align: center; font-family: 'Cinzel', serif; font-size: 1.6rem;
             color: #fff; margin: 40px 0 25px;
@@ -108,81 +98,77 @@
         
         .content-padding { padding: 0 25px; }
 
-        /* --- 2. SOBRE MIM (TEXT WRAP / FLOAT) --- */
-        /* Isso faz o texto envolver a imagem */
-        .about-container {
-            display: block; /* Garante comportamento de bloco */
-        }
-
+        /* --- SOBRE MIM --- */
+        .about-container { display: block; }
         .mini-photo-float {
-            float: right; /* Flutua à direita */
-            width: 140px; /* Largura fixa ou % */
-            margin-left: 15px; /* Espaço entre texto e foto */
-            margin-bottom: 5px;
-            border-radius: 8px;
-            border: 1px solid #333;
-            transform: rotate(2deg); /* Charme visual */
+            float: right; width: 140px; margin-left: 15px; margin-bottom: 5px;
+            border-radius: 8px; border: 1px solid #333; transform: rotate(2deg);
         }
-        
-        .about-text {
-            font-size: 0.95rem;
-            text-align: justify;
-            color: #ccc;
-            line-height: 1.7;
-        }
-        
-        /* Limpa o float para não quebrar o layout abaixo */
+        .about-text { font-size: 0.95rem; text-align: justify; color: #ccc; line-height: 1.7; }
         .clearfix::after { content: ""; clear: both; display: table; }
 
-
-        /* --- 3. PORTFÓLIO COMPOSITE (GRID) --- */
-        .portfolio-mix {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr; /* Coluna da direita um pouco mais larga */
-            gap: 12px;
+        /* --- NOVO: CARROSSEL INFINITO --- */
+        .carousel-wrapper {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
             margin-top: 20px;
+            padding: 10px 0;
+            background: #000;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+        }
+        
+        /* Efeito de sombra nas laterais para suavizar */
+        .carousel-wrapper::before, .carousel-wrapper::after {
+            content: ""; position: absolute; top: 0; width: 40px; height: 100%; z-index: 2;
+        }
+        .carousel-wrapper::before { left: 0; background: linear-gradient(to right, #050505, transparent); }
+        .carousel-wrapper::after { right: 0; background: linear-gradient(to left, #050505, transparent); }
+
+        .carousel-track {
+            display: flex;
+            width: max-content; /* Permite que cresça o quanto precisar */
+            animation: scroll 20s linear infinite;
         }
 
-        /* Foto Esquerda (Alta) */
-        .item-tall {
-            grid-row: span 2;
-            position: relative; border-radius: 6px; overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
-        .img-tall { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); }
-
-        /* Foto Direita (Lookbook) - AJUSTADA PARA NÃO CORTAR */
-        .item-square {
-            position: relative; border-radius: 6px; overflow: hidden;
-            border: 1px solid var(--border-color);
-            /* Altura mínima para garantir visualização */
-            min-height: 220px; 
-        }
-        .img-square { 
-            width: 100%; height: 100%; 
-            object-fit: cover; 
-            /* FOCA NO TOPO PARA NÃO CORTAR O ROSTO */
-            object-position: top center; 
+        .carousel-item {
+            width: 200px; /* Largura da foto */
+            height: 300px; /* Altura da foto */
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 10px;
+            filter: grayscale(100%); /* P&B elegante */
+            border: 1px solid #333;
         }
 
-        /* Stats Box */
-        .stats-box {
-            background: var(--card-bg);
-            border-radius: 6px;
-            padding: 15px;
-            display: flex; flex-direction: column; justify-content: center;
-            border: 1px solid var(--border-color);
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Move metade (já que duplicamos as imagens) */
         }
-        .stat-row {
-            display: flex; justify-content: space-between;
-            font-size: 0.75rem; border-bottom: 1px solid #222; padding: 5px 0; color: #999;
-        }
-        .stat-row strong { color: #fff; font-family: 'Cinzel', serif; }
 
-        /* --- 4. ESTILO (3 FOTOS) --- */
-        .style-grid {
-            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; padding: 0 15px;
+        /* --- NOVO: MÉTRICAS ABAIXO DO CARROSSEL --- */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2 colunas */
+            gap: 15px 30px;
+            padding: 25px;
+            background: #0a0a0a;
+            margin-top: 10px;
+            border-bottom: 1px solid #222;
         }
+
+        .metric-item {
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid #222; padding-bottom: 5px;
+        }
+        
+        .metric-label { font-size: 0.75rem; text-transform: uppercase; color: #777; letter-spacing: 1px; }
+        .metric-value { font-size: 1rem; color: #fff; font-family: 'Cinzel', serif; font-weight: 600; }
+
+
+        /* --- ESTILO --- */
+        .style-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; padding: 0 15px; }
         .style-item { text-align: center; }
         .style-img {
             width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 4px; margin-bottom: 8px;
@@ -190,34 +176,21 @@
         }
         .style-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: #888; }
 
-        /* --- 5. CONTATO + DECK --- */
+        /* --- CONTATO --- */
         .contact-section {
-            margin-top: 60px;
-            background: var(--card-bg);
-            border-top-left-radius: 35px;
-            border-top-right-radius: 35px;
-            padding-bottom: 40px;
-            overflow: hidden;
-            position: relative;
+            margin-top: 60px; background: var(--card-bg);
+            border-top-left-radius: 35px; border-top-right-radius: 35px;
+            padding-bottom: 40px; overflow: hidden; position: relative;
         }
-
-        .deck-image-container {
-            width: 100%; height: 350px; position: relative;
-        }
+        .deck-image-container { width: 100%; height: 350px; position: relative; }
         .deck-img { width: 100%; height: 100%; object-fit: cover; }
         
         .contact-content { padding: 0 25px 30px; position: relative; margin-top: -40px; }
-        
         .contact-card {
-            background: rgba(10,10,10,0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px 25px;
-            border: 1px solid #333;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            text-align: center;
+            background: rgba(10,10,10,0.95); backdrop-filter: blur(10px);
+            border-radius: 20px; padding: 30px 25px;
+            border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center;
         }
-
         .contact-btn {
             display: flex; align-items: center; justify-content: flex-start;
             background: #000; padding: 15px 20px; border-radius: 10px;
@@ -229,27 +202,22 @@
         .c-text { text-align: left; }
         .c-text span { display: block; font-size: 0.65rem; color: #888; text-transform: uppercase; }
         .c-text strong { font-size: 0.9rem; font-weight: 500; }
-
         .footer { text-align: center; margin-top: 30px; font-size: 0.7rem; color: #555; text-transform: uppercase; }
         .footer a { color: #888; text-decoration: none; font-weight: bold; }
-
     </style>
 </head>
 <body>
 
     <div class="container">
         
-        <!-- 1. HERO -->
+        <!-- HERO -->
         <header class="header">
             <div class="header-bg"></div>
             <div class="header-overlay"></div>
-            
             <div class="header-content">
                 <h1 class="title">Sandi Schaefer</h1>
                 <p class="subtitle">Portfólio Criativo</p>
                 <div style="width: 40px; height: 1px; background: #fff; margin: 5px auto 15px;"></div>
-                
-                <!-- Ícones sociais clicáveis com z-index corrigido -->
                 <div class="header-social">
                     <a href="https://www.instagram.com/sandiischaefer" target="_blank" class="h-icon"><i class="fab fa-instagram"></i></a>
                     <a href="https://wa.me/554792880402" target="_blank" class="h-icon"><i class="fab fa-whatsapp"></i></a>
@@ -258,13 +226,10 @@
             </div>
         </header>
 
-        <!-- 2. SOBRE MIM (COM LAYOUT FLUTUANTE) -->
+        <!-- SOBRE MIM -->
         <div class="content-padding">
             <div class="about-container clearfix">
-                <!-- Foto flutuante à direita -->
                 <img src="mini_sandi.jpg" alt="Mini Sandi" class="mini-photo-float">
-                
-                <!-- Texto envolvendo a foto -->
                 <p class="about-text">
                     "Minha essência é leveza e comprometimento."
                     <br><br>
@@ -275,42 +240,62 @@
 
         <h2 class="section-title">Composite</h2>
 
-        <!-- 3. PORTFÓLIO & MEDIDAS -->
-        <div class="content-padding">
-            <div class="portfolio-mix">
+        <!-- NOVO: CARROSSEL INFINITO -->
+        <div class="carousel-wrapper">
+            <div class="carousel-track">
+                <!-- CONJUNTO 1 -->
+                <img src="full_body_bw.jpg" class="carousel-item" alt="Full Body">
+                <img src="lookbook.jpg" class="carousel-item" alt="Lookbook" style="object-position: top;">
+                <img src="event_photo.jpg" class="carousel-item" alt="Event">
+                <img src="estilo_vaidosa.jpg" class="carousel-item" alt="Style">
                 
-                <!-- Foto Corpo Inteiro (Esquerda) -->
-                <div class="item-tall">
-                    <img src="full_body_bw.jpg" alt="Ensaio P&B" class="img-tall">
-                </div>
-                
-                <!-- Foto Lookbook (Direita Topo) - Corrigida para mostrar mais -->
-                <div class="item-square">
-                    <img src="lookbook.jpg" alt="Lookbook" class="img-square">
-                </div>
-
-                <!-- Medidas (Direita Baixo) -->
-                <div class="stats-box">
-                    <div class="stat-row"><span>Altura</span> <strong>1,60 m</strong></div>
-                    <div class="stat-row"><span>Manequim</span> <strong>36</strong></div>
-                    <div class="stat-row"><span>Busto</span> <strong>81 cm</strong></div>
-                    <div class="stat-row"><span>Cintura</span> <strong>62 cm</strong></div>
-                    <div class="stat-row"><span>Quadril</span> <strong>91 cm</strong></div>
-                    <div class="stat-row"><span>Olhos</span> <strong>Verdes</strong></div>
-                    <div class="stat-row"><span>Sapatos</span> <strong>35</strong></div>
-                </div>
-
+                <!-- CONJUNTO 2 (DUPLICADO PARA EFEITO INFINITO) -->
+                <img src="full_body_bw.jpg" class="carousel-item" alt="Full Body">
+                <img src="lookbook.jpg" class="carousel-item" alt="Lookbook" style="object-position: top;">
+                <img src="event_photo.jpg" class="carousel-item" alt="Event">
+                <img src="estilo_vaidosa.jpg" class="carousel-item" alt="Style">
             </div>
-            
-            <!-- Foto Evento/Colorida (Opcional, abaixo do grid) -->
-            <div style="margin-top: 10px; border-radius: 6px; overflow: hidden; border: 1px solid #222;">
-                <img src="event_photo.jpg" alt="Evento" style="width: 100%; display: block; filter: brightness(0.9);">
+        </div>
+
+        <!-- NOVO: MÉTRICAS ORGANIZADAS ABAIXO -->
+        <div class="metrics-grid">
+            <div class="metric-item">
+                <span class="metric-label">Altura</span>
+                <span class="metric-value">1,60 m</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-label">Manequim</span>
+                <span class="metric-value">36</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-label">Busto</span>
+                <span class="metric-value">81 cm</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-label">Cintura</span>
+                <span class="metric-value">62 cm</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-label">Quadril</span>
+                <span class="metric-value">91 cm</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-label">Olhos</span>
+                <span class="metric-value">Verdes</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-label">Sapatos</span>
+                <span class="metric-value">35</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-label">Cabelo</span>
+                <span class="metric-value">Loiro</span>
             </div>
         </div>
 
         <h2 class="section-title">Estilo</h2>
 
-        <!-- 4. ESTILO -->
+        <!-- ESTILO -->
         <div class="style-grid">
             <div class="style-item">
                 <img src="estilo_dedicada.jpg" class="style-img">
@@ -326,14 +311,11 @@
             </div>
         </div>
 
-        <!-- 5. CONTATO -->
+        <!-- CONTATO -->
         <div class="contact-section">
-            
-            <!-- Imagem do Deck -->
             <div class="deck-image-container">
                 <img src="lifestyle_deck.jpg" alt="Lifestyle Deck" class="deck-img">
             </div>
-
             <div class="contact-content">
                 <div class="contact-card">
                     <h2 class="section-title" style="margin: 0 0 25px; font-size: 1.4rem;">Trabalhe Comigo</h2>
@@ -367,9 +349,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 
 </body>
