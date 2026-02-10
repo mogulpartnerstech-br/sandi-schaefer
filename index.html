@@ -65,7 +65,7 @@
             background-image: url('hero_horizontal.jpg'); 
             background-size: cover; 
             background-position: center top; 
-            filter: grayscale(100%);
+            /* REMOVIDO O FILTRO PRETO E BRANCO DAQUI TAMBÉM */
             z-index: 1;
             opacity: 0.9;
         }
@@ -107,7 +107,7 @@
         .about-text { font-size: 0.95rem; text-align: justify; color: #ccc; line-height: 1.7; }
         .clearfix::after { content: ""; clear: both; display: table; }
 
-        /* --- NOVO: CARROSSEL INFINITO --- */
+        /* --- CARROSSEL INFINITO (COLORIDO) --- */
         .carousel-wrapper {
             width: 100%;
             overflow: hidden;
@@ -119,7 +119,6 @@
             border-bottom: 1px solid #222;
         }
         
-        /* Efeito de sombra nas laterais para suavizar */
         .carousel-wrapper::before, .carousel-wrapper::after {
             content: ""; position: absolute; top: 0; width: 40px; height: 100%; z-index: 2;
         }
@@ -128,29 +127,29 @@
 
         .carousel-track {
             display: flex;
-            width: max-content; /* Permite que cresça o quanto precisar */
+            width: max-content;
             animation: scroll 20s linear infinite;
         }
 
         .carousel-item {
-            width: 200px; /* Largura da foto */
-            height: 300px; /* Altura da foto */
+            width: 200px; 
+            height: 300px;
             object-fit: cover;
             border-radius: 4px;
             margin-right: 10px;
-            filter: grayscale(100%); /* P&B elegante */
+            /* FILTRO DE PRETO E BRANCO REMOVIDO - AGORA É COLORIDO */
             border: 1px solid #333;
         }
 
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* Move metade (já que duplicamos as imagens) */
+            100% { transform: translateX(-50%); } 
         }
 
-        /* --- NOVO: MÉTRICAS ABAIXO DO CARROSSEL --- */
+        /* --- MÉTRICAS ABAIXO DO CARROSSEL --- */
         .metrics-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* 2 colunas */
+            grid-template-columns: 1fr 1fr;
             gap: 15px 30px;
             padding: 25px;
             background: #0a0a0a;
@@ -166,13 +165,14 @@
         .metric-label { font-size: 0.75rem; text-transform: uppercase; color: #777; letter-spacing: 1px; }
         .metric-value { font-size: 1rem; color: #fff; font-family: 'Cinzel', serif; font-weight: 600; }
 
-
         /* --- ESTILO --- */
         .style-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; padding: 0 15px; }
         .style-item { text-align: center; }
         .style-img {
             width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 4px; margin-bottom: 8px;
-            border: 1px solid #222; filter: brightness(0.9);
+            border: 1px solid #222; 
+            /* Mantive apenas um leve ajuste de brilho, mas sem grayscale */
+            filter: brightness(0.9);
         }
         .style-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: #888; }
 
@@ -240,10 +240,11 @@
 
         <h2 class="section-title">Composite</h2>
 
-        <!-- NOVO: CARROSSEL INFINITO -->
+        <!-- CARROSSEL INFINITO (COLORIDO) -->
         <div class="carousel-wrapper">
             <div class="carousel-track">
                 <!-- CONJUNTO 1 -->
+                <!-- As fotos agora aparecerão coloridas (sem grayscale) -->
                 <img src="full_body_bw.jpg" class="carousel-item" alt="Full Body">
                 <img src="lookbook.jpg" class="carousel-item" alt="Lookbook" style="object-position: top;">
                 <img src="event_photo.jpg" class="carousel-item" alt="Event">
@@ -257,7 +258,7 @@
             </div>
         </div>
 
-        <!-- NOVO: MÉTRICAS ORGANIZADAS ABAIXO -->
+        <!-- MÉTRICAS ORGANIZADAS ABAIXO -->
         <div class="metrics-grid">
             <div class="metric-item">
                 <span class="metric-label">Altura</span>
@@ -295,7 +296,7 @@
 
         <h2 class="section-title">Estilo</h2>
 
-        <!-- ESTILO -->
+        <!-- ESTILO (COLORIDO) -->
         <div class="style-grid">
             <div class="style-item">
                 <img src="estilo_dedicada.jpg" class="style-img">
