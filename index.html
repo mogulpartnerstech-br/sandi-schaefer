@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sandi Schaefer | Portfólio</title>
+    
+    <!-- METADADOS -->
+    <meta property="og:title" content="Sandi Schaefer | Modelo">
+    <meta property="og:description" content="Portfólio Criativo, Medidas e Composite Digital.">
+    <meta property="og:image" content="hero_bw.jpg">
+    <meta property="og:type" content="website">
+    
+    <!-- Fontes: Cinzel (Títulos luxo) e Montserrat (Texto) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #000000; /* Preto absoluto como no PDF */
+            --text-color: #ffffff;
+            --accent-line: #ffffff; /* Linhas finas brancas */
+            --accent-gold: #D4AF37; /* Apenas para detalhes sutis de link */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body { 
+            background-color: var(--bg-color);
+            color: var(--text-color); 
+            font-family: 'Montserrat', sans-serif; 
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: 'Cinzel', serif; font-weight: 400; letter-spacing: 1px; }
+        
+        /* O Container centraliza tudo no Desktop e preenche no Mobile */
+        .container { 
+            max-width: 500px; 
+            margin: 0 auto; 
+            background-color: #000;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5); /* Sombra para destacar no desktop */
+            min-height: 100vh;
+        }
+
+        /* --- HERO SECTION (CAPA) --- */
+        .hero {
+            position: relative;
+            padding-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .hero-header {
+            padding: 0 20px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            line-height: 1.1;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #ccc;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* Imagem Hero "Travada" e Quadrada/Vertical */
+        .hero-image-container {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4/5; /* Formato retrato elegante */
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            filter: grayscale(100%); /* Efeito P&B do PDF */
+        }
+
+        .hero-quote {
+            padding: 0 20px;
+            font-size: 0.9rem;
+            color: #ddd;
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* --- SEÇÕES GERAIS --- */
+        .section {
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Linha decorativa ao lado do título (estilo PDF) */
+        .section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 105%;
+            width: 100px;
+            height: 1px;
+            background-color: #555;
+        }
+
+        /* --- SOBRE MIM --- */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .about-text {
+            font-size: 0.95rem;
+            text-align: justify;
+            color: #ccc;
+        }
+        .mini-photo {
+            width: 100%;
+            height: auto;
+            border: 1px solid #333;
+        }
+        .caption {
+            font-size: 0.7rem;
+            text-align: right;
+            color: #777;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* --- COMPOSITE / MEDIDAS --- */
+        .composite-section {
+            background-color: #0a0a0a; /* Leve destaque de fundo */
+            margin: 20px 0;
+        }
+        
+        .measurements-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 30px;
+            row-gap: 15px;
+            margin-top: 20px;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+            padding: 20px 0;
+        }
+        
+        .measure-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .measure-label {
+            text-transform: uppercase;
+            color: #888;
+            font-size: 0.8rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 2px;
+        }
+        
+        .measure-value {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* --- ESTILO (3 FOTOS) --- */
+        .style-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .style-card {
+            text-align: center;
+        }
+        
+        .style-img {
+            width: 100%;
+            aspect-ratio: 9/16; /* Formato Stories */
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 1px solid #222;
+        }
+        
+        .style-name {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- CONTATO / TRABALHE COMIGO --- */
+        .contact-section {
+            background-color: #000;
+            padding-bottom: 60px;
+            border-top: 1px solid #222;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .contact-img {
+            width: 100%;
+            height: auto;
+            filter: brightness(0.9);
+        }
+
+        .contact-info-box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-left: 10px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .contact-icon {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-top: 3px;
+        }
+        
+        .contact-text label {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            margin-bottom: 3px;
+        }
+        
+        .contact-text a, .contact-text span {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+        
+        .contact-text a:hover {
+            color: #fff;
+        }
+
+        /* --- RODAPÉ (Igual Rhany) --- */
+        .footer { 
+            text-align: center; 
+            padding: 30px 20px 50px; 
+            font-size: 0.7rem; 
+            color: #555; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            border-top: 1px solid #111;
+            background-color: #000;
+        }
+        .footer a { color: #888; text-decoration: none; font-weight: 600; }
+        .footer a:hover { color: #fff; }
+
+        /* Botão Flutuante WhatsApp (Opcional, mas recomendado para conversão) */
+        .float-wa {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: #fff;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            z-index: 1000;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- HERO SECTION: CAPA DO PORTFÓLIO -->
+        <header class="hero">
+            <div class="hero-header">
+                <h1>Sandi<br>Schaefer</h1>
+                <span class="hero-subtitle">Portfólio Criativo</span>
+            </div>
+            
+            <!-- FOTO HERO: Grande, P&B, Quadrada/Retrato -->
+            <div class="hero-image-container">
+                <!-- Coloque aqui a foto P&B do rosto dela (Capa do PDF) -->
+                <img src="hero_bw.jpg" alt="Sandi Schaefer Portrait" class="hero-img">
+            </div>
+
+            <p class="hero-quote">
+                "Minha essência é leveza e comprometimento - qualidades que levo agora para minha carreira na moda."
+            </p>
+        </header>
+
+        <!-- SOBRE MIM -->
+        <section class="section" id="sobre">
+            <h2 class="section-title">Sobre Mim</h2>
+            <div class="about-content">
+                <p class="about-text">
+                    Apaixonada por fotografia e moda desde sempre, encontrei nos ensaios a confirmação dessa paixão. Iniciei minha trajetória como modelo, unindo leveza, autenticidade e a valorização de um estilo de vida saudável.
+                </p>
+                <p class="about-text">
+                    Minha formação em Nutrição complementa minha visão, pois acredito que saúde e beleza caminham juntas.
+                </p>
+                
+                <!-- FOTO MINI SANDI -->
+                <div>
+                    <img src="mini_sandi.jpg" alt="Sandi Criança" class="mini-photo">
+                    <p class="caption">mini sandi :)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MEDIDAS (COMPOSITE) -->
+        <section class="section composite-section">
+            <h2 class="section-title">Composite</h2>
+            
+            <!-- FOTO DE CORPO (Lookbook/Ensaio Pessoal P&B) -->
+            <div style="margin-bottom: 20px;">
+                 <img src="full_body_bw.jpg" alt="Ensaio Pessoal" style="width: 100%; filter: grayscale(100%);">
+            </div>
+
+            <div class="measurements-grid">
+                <div class="measure-item">
+                    <span class="measure-label">Altura</span>
+                    <span class="measure-value">1,60 m</span>
+                </div>
+                <div class="measure-item">
+                    <span class="measure-label">Sapatos</span>
+                    <span class="measure-value">BR 35</span>
+                </div>
+                
+                <div class="measure-item">
+                    <span class="measure-label">Cintura</span>
+                    <span class="measure-value">62 cm</span>
+                </div>
+                <div class="measure-item">
+                    <span class="measure-label">Cabelo</span>
+                    <span class="measure-value">Loiro</span>
+                </div>
+
+                <div class="measure-item">
+                    <span class="measure-label">Quadril</span>
+                    <span class="measure-value">91 cm</span>
+                </div>
+                <div class="measure-item">
+                    <span class="measure-label">Olhos</span>
+                    <span class="measure-value">Verdes</span>
+                </div>
+
+                <div class="measure-item">
+                    <span class="measure-label">Busto</span>
+                    <span class="measure-value">81 cm</span>
+                </div>
+                <div class="measure-item">
+                    <span class="measure-label">Manequim</span>
+                    <span class="measure-value">36</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESTILO (3 FOTOS) -->
+        <section class="section">
+            <h2 class="section-title" style="text-align: center; display: block; width: 100%;">Estilo</h2>
+            <style>.section-title::after{display:none;}</style> <!-- Remove a linha lateral só aqui -->
+
+            <div class="style-grid">
+                <!-- Foto 1: Academia -->
+                <div class="style-card">
+                    <img src="estilo_dedicada.jpg" alt="Academia" class="style-img">
+                    <span class="style-name">Dedicada</span>
+                </div>
+                <!-- Foto 2: Espelho/Moda -->
+                <div class="style-card">
+                    <img src="estilo_vaidosa.jpg" alt="Look" class="style-img">
+                    <span class="style-name">Vaidosa</span>
+                </div>
+                <!-- Foto 3: SUP/Praia -->
+                <div class="style-card">
+                    <img src="estilo_aventureira.jpg" alt="SUP" class="style-img">
+                    <span class="style-name">Aventureira</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRABALHE COMIGO / CONTATO -->
+        <section class="section contact-section">
+            <h2 class="section-title">Contato</h2>
+            
+            <div class="contact-grid">
+                <!-- Foto Lifestyle (Deck de madeira) -->
+                <img src="lifestyle_deck.jpg" alt="Lifestyle Deck" class="contact-img">
+
+                <div class="contact-info-box">
+                    <div class="contact-item">
+                        <i class="far fa-envelope contact-icon"></i>
+                        <div class="contact-text">
+                            <label>E-mail</label>
+                            <a href="mailto:sandiele.emili@gmail.com">sandiele.emili@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <div class="contact-text">
+                            <label>Telefone</label>
+                            <a href="https://wa.me/554792880402">+55 (47) 9288-0402</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fab fa-instagram contact-icon"></i>
+                        <div class="contact-text">
+                            <label>Instagram</label>
+                            <a href="https://www.instagram.com/sandiischaefer" target="_blank">@sandiischaefer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RODAPÉ -->
+        <div class="footer">
+            Powered by <a href="https://www.instagram.com/migreagora/" target="_blank">Migre Agora</a>
+        </div>
+
+    </div>
+
+    <!-- Botão WhatsApp Flutuante (Opcional) -->
+    <a href="https://wa.me/554792880402" class="float-wa" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
